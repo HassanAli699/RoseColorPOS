@@ -1,0 +1,90 @@
+@import url("https://fonts.googleapis.com/css2?family=Sora&display=swap");
+
+body {
+  font-family: "Sora", sans-serif;
+}
+
+.item-button button{
+  margin-top: 20px;
+  width: 200px;
+  background-color: #1890FF;
+  color: white;
+}
+
+.spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 100;
+}
+
+.spinner-border {
+  height: 100px;
+  width: 100px;
+}
+
+.category {
+  border: 2px solid rgba(128, 128, 128, 0.547);
+  margin-right: 25px;
+  margin-bottom: 20px;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 10px;
+  
+} 
+
+.category img{
+  margin-left: 10px;
+}
+
+.category-active{
+  border: 2px solid #1890FF ;
+  background-color: rgba(128, 128, 128, 0.108);
+}
+
+/* =============== REGISTER ============= */
+.register {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  flex-direction: column;
+
+}
+
+.register input{
+  width: 400px !important;
+}
+
+.register-form {
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  background-color: #188fff64;
+}
+
+.register-form h1{
+  text-align: center;  
+  border-radius: 10px;
+  color: white;
+  font-weight: bold;
+  font-family: sans-serif;
+  padding: 7px;
+}
+
+.register-form h3{
+  text-align: center;  
+  border-radius: 10px;
+  color: black;
+  font-weight: bold;
+  font-family: sans-serif;
+  padding: 7px;
+}
+
+.ant-layout-sider{
+  min-width: 250px !important;
+  max-width: 250px;
+}
+
+
