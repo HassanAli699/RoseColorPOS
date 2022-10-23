@@ -242,39 +242,13 @@ const SalesPage = () => {
             title: 'Rates',
             dataIndex: 'address',
             key: 'address',
+            width: '30%',
             editable: true,
             ...getColumnSearchProps('address'),
             sorter: (a, b) => a.address.length - b.address.length,
             sortDirections: ['descend', 'ascend'],
         },
 
-        {
-            title: 'Action',
-            dataIndex: 'operation',
-            width: '15%',
-            render: (_, record) => {
-                const editable = isEditing(record);
-                return editable ? (
-                    <span>
-                        <Typography.Link
-                            onClick={() => save(record.key)}
-                            style={{
-                                marginRight: 8,
-                            }}
-                        >
-                            Save
-                        </Typography.Link>
-                        <Popconfirm title="Sure to cancel?" onConfirm={cancel}>
-                            <a>Cancel</a>
-                        </Popconfirm>
-                    </span>
-                ) : (
-                    <Typography.Link disabled={editingKey !== ''} onClick={() => edit(record)}>
-                        Edit
-                    </Typography.Link>
-                );
-            },
-        },
     ];
 
     const itemColumns = [
@@ -340,25 +314,8 @@ const SalesPage = () => {
         <DefaultLayout>
             <h2>Sales Invoice : </h2>
 
-            <div>
-                <p>Customer's Name : <Input name='customersname' type='text' placeholder="Customers Name"></Input> </p>
-
-
-            </div>
-
-
-            <h5>Sales : </h5>
             <div className='salesdis'>
-                <p className='inputdis'>Pks :<Input name='Discount' type='number' placeholder="Pks"></Input> </p>
-                <p className='inputdis'>PCs :<Input name='Discount' type='number' placeholder="Pcs"></Input> </p>
-                <p className='inputdis'>Rate :<Input name='Discount' type='number' placeholder="Rate"></Input> </p>
-                <p className='inputdis'>Total Price :<Input name='Discount' type='number' placeholder="Total Price"></Input> </p>
-
-                <div >
-
-                    <Button className='buttondis'>Add Item</Button>
-                    <Button className='buttondis'>Remove Item</Button>
-                </div>
+                <p>Customer's Name : <Input name='customersname' type='text' placeholder="Customers Name"></Input> </p>
 
 
             </div>
@@ -392,7 +349,7 @@ const SalesPage = () => {
                                 cell: EditableCell,
                             },
                         }}
-                        bordered
+                        bordered='true'
                         size='small'
                         dataSource={data}
                         columns={itemColumns}
@@ -401,6 +358,22 @@ const SalesPage = () => {
 
                     />
                 </Form>
+
+
+            </div>
+
+            <h5>Sales : </h5>
+            <div className='salesdis'>
+                <p className='inputdis'>Pks :<Input name='Discount' type='number' placeholder="Pks"></Input> </p>
+                <p className='inputdis'>PCs :<Input name='Discount' type='number' placeholder="Pcs"></Input> </p>
+                <p className='inputdis'>Rate :<Input name='Discount' type='number' placeholder="Rate"></Input> </p>
+                <p className='inputdis'>Total Price :<Input name='Discount' type='number' placeholder="Total Price"></Input> </p>
+
+                <div >
+
+                    <Button className='buttondis'>Add Item</Button>
+                    <Button className='buttondis'>Remove Item</Button>
+                </div>
 
 
             </div>
