@@ -33,25 +33,25 @@ function App() {
         <Routes>
 
           <Route path="/" element={
-            <ProtectedRoute>
-              <HomePage />
-            </ProtectedRoute>
+
+            <HomePage />
+
 
           } />
 
 
           <Route path="/items" element={
-            <ProtectedRoute>
-              <ItemsPage />
-            </ProtectedRoute>
+
+            <ItemsPage />
+
 
           } />
 
 
           <Route path="/cart" element={
-            <ProtectedRoute>
-              <CartPage />
-            </ProtectedRoute>
+
+            <CartPage />
+
 
 
           } />
@@ -66,138 +66,138 @@ function App() {
 
           } />
           <Route path="/bills" element={
-            <ProtectedRoute>
 
-              <SalesPage />
-            </ProtectedRoute>
+
+            <SalesPage />
+
 
 
           } />
           <Route path="/purchase" element={
-            <ProtectedRoute>
-              <PurchasePage />
 
-            </ProtectedRoute>
+            <PurchasePage />
+
+
 
 
           } />
           <Route path="/customers" element={
-            <ProtectedRoute>
 
-              <CustomersPage />
-            </ProtectedRoute>
+
+            <CustomersPage />
+
 
 
           } />
           <Route path="/category" element={
-            <ProtectedRoute>
 
-              <CategoryPage />
-            </ProtectedRoute>
+
+            <CategoryPage />
+
 
 
           } />
           <Route path="/brand" element={
-            <ProtectedRoute>
-              <BrandPage />
 
-            </ProtectedRoute>
+            <BrandPage />
+
+
 
 
           } />
           <Route path="/controlpanel" element={
-            <ProtectedRoute>
-              <ControlPanelPage />
 
-            </ProtectedRoute>
+            <ControlPanelPage />
+
+
 
 
           } />
 
           <Route path="/salerec" element={
-            <ProtectedRoute>
-              <SaleRecordPage />
 
-            </ProtectedRoute>
+            <SaleRecordPage />
+
+
 
 
           } />
           <Route path="/purrec" element={
-            <ProtectedRoute>
 
-              <PurchaseRecordPage />
-            </ProtectedRoute>
+
+            <PurchaseRecordPage />
+
 
 
           } />
           <Route path="/customeracc" element={
-            <ProtectedRoute>
-              <CustomersAccountPage />
-            </ProtectedRoute>
+
+            <CustomersAccountPage />
+
 
 
           } />
           <Route path="/supacc" element={
-            <ProtectedRoute>
-              <SuppliersAccountPage />
-            </ProtectedRoute>
+
+            <SuppliersAccountPage />
+
 
 
           } />
           <Route path="/salereturn" element={
-            <ProtectedRoute>
-              <SaleReturnedPage />
-            </ProtectedRoute>
+
+            <SaleReturnedPage />
+
 
 
           } />
           <Route path="/bankacc" element={
-            <ProtectedRoute>
 
-              <BankAccount />
-            </ProtectedRoute>
+
+            <BankAccount />
+
 
 
           } />
           <Route path="/purreturn" element={
-            <ProtectedRoute>
-              <PurchaseReturnedPage />
-            </ProtectedRoute>
+
+            <PurchaseReturnedPage />
+
 
 
           } />
           <Route path="/producthistory" element={
-            <ProtectedRoute>
-              <ProductHistory />
-            </ProtectedRoute>
+
+            <ProductHistory />
+
 
 
           } />
           <Route path="/searchrec" element={
-            <ProtectedRoute>
-              <SearchRecordPage />
-            </ProtectedRoute>
+
+            <SearchRecordPage />
+
 
 
           } />
           <Route path="/sale-from-shop" element={
-            <ProtectedRoute>
-              <SaleFromShopPage />
-            </ProtectedRoute>
+
+            <SaleFromShopPage />
+
 
 
           } />
           <Route path="/databack" element={
-            <ProtectedRoute>
-              <DataBackupPage />
-            </ProtectedRoute>
+
+            <DataBackupPage />
+
 
 
           } />
           <Route path="/about" element={
-            <ProtectedRoute>
-              <AboutPage />
-            </ProtectedRoute>
+
+            <AboutPage />
+
 
 
           } />
@@ -210,10 +210,4 @@ function App() {
 
 export default App;
 
-export function ProtectedRoute({ children }) {
-  if (localStorage.getItem('auth')) {
-    return children
-  } else {
-    return <Navigate to='/login' />
-  }
-}
+
