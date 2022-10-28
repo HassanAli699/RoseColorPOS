@@ -24,7 +24,6 @@ import SaleReturnedPage from './pages/SaleReturnedPage';
 import SalesPage from './pages/SalesPage';
 import SearchRecordPage from './pages/SearchRecordPage';
 import SuppliersAccountPage from './pages/SuppliersAccountPage';
-import TelephoneDirectoryPage from './pages/TelephoneDirectoryPage';
 
 function App() {
   return (
@@ -34,23 +33,25 @@ function App() {
         <Routes>
 
           <Route path="/" element={
-            <HomePage />
+            <ProtectedRoute>
+              <HomePage />
+            </ProtectedRoute>
 
           } />
 
 
           <Route path="/items" element={
-
-            <ItemsPage />
-
+            <ProtectedRoute>
+              <ItemsPage />
+            </ProtectedRoute>
 
           } />
 
 
           <Route path="/cart" element={
-
-            <CartPage />
-
+            <ProtectedRoute>
+              <CartPage />
+            </ProtectedRoute>
 
 
           } />
@@ -65,143 +66,138 @@ function App() {
 
           } />
           <Route path="/bills" element={
+            <ProtectedRoute>
 
-
-            <SalesPage />
-
+              <SalesPage />
+            </ProtectedRoute>
 
 
           } />
           <Route path="/purchase" element={
+            <ProtectedRoute>
+              <PurchasePage />
 
-            <PurchasePage />
-
-
+            </ProtectedRoute>
 
 
           } />
           <Route path="/customers" element={
+            <ProtectedRoute>
 
-
-            <CustomersPage />
-
+              <CustomersPage />
+            </ProtectedRoute>
 
 
           } />
           <Route path="/category" element={
+            <ProtectedRoute>
 
-
-            <CategoryPage />
-
+              <CategoryPage />
+            </ProtectedRoute>
 
 
           } />
           <Route path="/brand" element={
+            <ProtectedRoute>
+              <BrandPage />
 
-            <BrandPage />
-
-
+            </ProtectedRoute>
 
 
           } />
           <Route path="/controlpanel" element={
+            <ProtectedRoute>
+              <ControlPanelPage />
 
-            <ControlPanelPage />
-
-
-
-
-          } />
-          <Route path="/telephonedir" element={
-
-
-            <TelephoneDirectoryPage />
-
-
+            </ProtectedRoute>
 
 
           } />
+
           <Route path="/salerec" element={
+            <ProtectedRoute>
+              <SaleRecordPage />
 
-            <SaleRecordPage />
-
-
+            </ProtectedRoute>
 
 
           } />
           <Route path="/purrec" element={
+            <ProtectedRoute>
 
-
-            <PurchaseRecordPage />
-
+              <PurchaseRecordPage />
+            </ProtectedRoute>
 
 
           } />
           <Route path="/customeracc" element={
+            <ProtectedRoute>
+              <CustomersAccountPage />
+            </ProtectedRoute>
 
-            <CustomersAccountPage />
+
           } />
           <Route path="/supacc" element={
-
-            <SuppliersAccountPage />
-
+            <ProtectedRoute>
+              <SuppliersAccountPage />
+            </ProtectedRoute>
 
 
           } />
           <Route path="/salereturn" element={
-
-            <SaleReturnedPage />
-
+            <ProtectedRoute>
+              <SaleReturnedPage />
+            </ProtectedRoute>
 
 
           } />
           <Route path="/bankacc" element={
+            <ProtectedRoute>
 
-
-            <BankAccount />
-
+              <BankAccount />
+            </ProtectedRoute>
 
 
           } />
           <Route path="/purreturn" element={
-
-            <PurchaseReturnedPage />
-
+            <ProtectedRoute>
+              <PurchaseReturnedPage />
+            </ProtectedRoute>
 
 
           } />
           <Route path="/producthistory" element={
-
-            <ProductHistory />
-
+            <ProtectedRoute>
+              <ProductHistory />
+            </ProtectedRoute>
 
 
           } />
           <Route path="/searchrec" element={
-
-            <SearchRecordPage />
-
+            <ProtectedRoute>
+              <SearchRecordPage />
+            </ProtectedRoute>
 
 
           } />
           <Route path="/sale-from-shop" element={
-
-            <SaleFromShopPage />
-
+            <ProtectedRoute>
+              <SaleFromShopPage />
+            </ProtectedRoute>
 
 
           } />
           <Route path="/databack" element={
-
-            <DataBackupPage />
-
+            <ProtectedRoute>
+              <DataBackupPage />
+            </ProtectedRoute>
 
 
           } />
           <Route path="/about" element={
-
-            <AboutPage />
-
+            <ProtectedRoute>
+              <AboutPage />
+            </ProtectedRoute>
 
 
           } />
@@ -214,10 +210,10 @@ function App() {
 
 export default App;
 
-// export function ProtectedRoute({ children }) {
-//   if (localStorage.getItem('auth')) {
-//     return children
-//   } else {
-//     return <Navigate to='/login' />
-//   }
-// }
+export function ProtectedRoute({ children }) {
+  if (localStorage.getItem('auth')) {
+    return children
+  } else {
+    return <Navigate to='/login' />
+  }
+}

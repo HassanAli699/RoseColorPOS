@@ -12,7 +12,6 @@ import {
   UnorderedListOutlined,
   ShoppingCartOutlined,
   ControlOutlined,
-  PhoneOutlined,
   InfoCircleOutlined,
   ContainerOutlined,
   StarOutlined,
@@ -65,30 +64,41 @@ const DefaultLayout = ({ children }) => {
             <Link to="/purchase">Purchase</Link>
           </Menu.Item>
 
-          <Menu.Item key="/items" icon={<UnorderedListOutlined />}>
-            <Link to="/items">Products</Link>
-          </Menu.Item>
+
 
           <Menu.Item key="/customers" icon={<UserOutlined />}>
             <Link to="/customers">Customers</Link>
           </Menu.Item>
 
-          <Menu.Item key="/category" icon={<ContainerOutlined />}>
-            <Link to="/category">Category</Link>
-          </Menu.Item>
-
-          <Menu.Item key="/brand" icon={<StarOutlined />}>
-            <Link to="/brand">Brands</Link>
-          </Menu.Item>
 
 
-          <Menu.Item key="/controlpanel" icon={<ControlOutlined />}>
-            <Link to="/controlpanel">Control Panel</Link>
-          </Menu.Item>
 
-          <Menu.Item key="/telephonedir" icon={<PhoneOutlined />}>
-            <Link to="/telephonedir">Telephone Directory</Link>
-          </Menu.Item>
+
+
+
+          <Menu.SubMenu title="Control Panel" icon={<ControlOutlined />}
+            children >
+
+            <Menu.Item key="/controlpanel" icon={<ControlOutlined />}>
+              <Link to="/controlpanel">Control Panel</Link>
+            </Menu.Item>
+
+            <Menu.Item key="/brand" icon={<StarOutlined />}>
+              <Link to="/brand">Brands</Link>
+            </Menu.Item>
+
+            <Menu.Item key="/category" icon={<ContainerOutlined />}>
+              <Link to="/category">Category</Link>
+            </Menu.Item>
+
+            <Menu.Item key="/items" icon={<UnorderedListOutlined />}>
+              <Link to="/items">Products</Link>
+            </Menu.Item>
+
+
+
+
+          </Menu.SubMenu>
 
           <Menu.SubMenu title="Utilities" icon={<ToolOutlined />}
             children >

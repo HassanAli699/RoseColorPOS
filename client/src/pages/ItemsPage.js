@@ -13,13 +13,22 @@ const ItemsPage = () => {
 
   const getAllItems = async () => {
     try {
+      dispatch({
+        type: 'SHOW_LOADING'
 
-      // const { data } = await axios.get('/api/items/get-item')
-      // setItemsData(data);
+      })
+      const { data } = await axios.get('/api/items/get-item')
+      setItemsData(data);
+      dispatch({
+        type: 'HIDE_LOADING'
 
-      // console.log(data)
+      })
+      console.log(data)
     } catch (error) {
+      dispatch({
+        type: 'HIDE_LOADING'
 
+      })
       console.log(error)
     }
   }
