@@ -87,4 +87,10 @@ body {
   max-width: 250px;
 }
 
+.ant-layout-content{
+  margin: 0px;
+  padding: 24px;
+  min-height: auto;
+}
+
 

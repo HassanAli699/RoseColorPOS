@@ -27,7 +27,7 @@ body {
     background: #fff;
     box-shadow: 0 0 3px #ccc ;
     border-radius: 10px;
-    margin: 10px;
+    margin-left: 5px;
     overflow: auto;
   }
 
@@ -81,6 +81,7 @@ body {
 .salesdis{
   display: flex;
   flex: 50%;
+  
  
 }
 
@@ -135,13 +136,9 @@ body {
   max-width: 30%;
 }
 
-.homepagetablediv{
-  max-width: 75%; 
-}
 
 .homedatadiv{
-  display: flex;
-  
+  display: flex;  
 }
 
 .homedatediv{
@@ -149,4 +146,28 @@ body {
  flex-direction: column;
  margin-left: 10px;
   
+}
+
+.salepageheaderdiv{
+  display: flex;
+  justify-content: space-between;  
+  margin-right: 40px;
+}
+
+.inputdiv{
+  display: flex;
+  justify-content: space-between;
+  
+  
+}
+
+.inputdivsearch{
+  display: flex;
+  flex: 50%;
+  max-width: 45%;
+  font-size: medium;
+}
+
+.inputmargindiv{
+  margin-left: 5px;
 }

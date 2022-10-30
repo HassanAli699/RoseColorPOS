@@ -312,13 +312,15 @@ const SalesPage = () => {
 
     return (
         <DefaultLayout>
-            <h2>Sales Invoice : </h2>
-
-            <div className='salesdis'>
-                <p>Customer's Name : <Input name='customersname' type='text' placeholder="Customers Name"></Input> </p>
-
-
+            <div className='salepageheaderdiv'>
+                <h3>Sales Invoice : </h3>
+                <p className='inputdiv'>Customer's Name : <Input className='inputmargindiv' name='customersname' type='text' placeholder="Customers Name"></Input> </p>
             </div>
+
+            <div>
+                <p className='inputdivsearch'>Search: <Input className='inputmargindiv' name='customersname' type='text' placeholder="Search Item"></Input> </p>
+            </div>
+
 
             <div className='tablediv'  >
 
@@ -332,6 +334,7 @@ const SalesPage = () => {
                             },
                         }}
                         bordered
+                        pagination={false}
                         size='small'
                         dataSource={data}
                         columns={mergedColumns}
@@ -351,6 +354,7 @@ const SalesPage = () => {
                         }}
                         bordered='true'
                         size='small'
+                        pagination={false}
                         dataSource={data}
                         columns={itemColumns}
                         scroll={{ y: 240 }}
