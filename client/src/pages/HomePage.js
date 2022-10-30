@@ -1,75 +1,116 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, Component } from 'react'
 import DefaultLayout from '../components/DefaultLayout'
-import axios from 'axios'
-import { useDispatch } from 'react-redux';
-import { Col, Row, Select } from 'antd';
-import ItemList from './../components/ItemList';
+import { Table, Input, DatePicker, Space, Button } from 'antd';
+
 
 const HomePage = () => {
-  const [itemsData, setItemsData] = useState([])
-  const [selectedCategory, setSelectedCategory] = useState('drinks')
-  const categories = [
+
+  const onChange = (date, dateString) => {
+    console.log(date, dateString);
+  };
+
+  const { Column, ColumnGroup } = Table;
+
+  const data = [
     {
-      name: 'drinks',
-      imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3vUaxERu9a4nHHVVn1kTjYrWbzkyEpKVO8Q&usqp=CAU'
+      key: '1',
+      firstName: 'John',
+      lastName: 'Brown',
+      age: 32,
+      address: 'New York No. 1 Lake Park',
 
     },
     {
-      name: 'rice',
-      imageUrl: 'https://static.vecteezy.com/system/resources/thumbnails/005/281/119/small_2x/rice-chinese-food-free-vector.jpg'
+      key: '2',
+      firstName: 'Jim',
+      lastName: 'Green',
+      age: 42,
+      address: 'London No. 1 Lake Park',
+
     },
     {
-      name: 'noodles',
-      imageUrl: 'https://static.vecteezy.com/system/resources/thumbnails/008/386/570/small_2x/asian-traditional-food-with-noodles-and-chopsticks-free-vector.jpg'
-    }
-  ]
-  const dispatch = useDispatch()
-  // Use Effect
-  // useEffect(() => {
-  //   const getAllItems =async () => {
-  //     try {
-  //       dispatch({
-  //         type: 'SHOW_LOADING'
+      key: '3',
+      firstName: 'Joe',
+      lastName: 'Black',
+      age: 32,
+      address: 'Sidney No. 1 Lake Park',
 
-  //       })
-  //       const {data} = await axios.get('/api/items/get-item')
-  //       setItemsData(data);
-  //       dispatch({
-  //         type: 'HIDE_LOADING'
+    },
+  ];
 
-  //       })
-  //       console.log(data)
-  //     } catch (error) {
-  //       console.log(error)
-  //     }
-  //   }
-  //   getAllItems()
-  // },[dispatch])
+
   return (
     <DefaultLayout>
 
-      <div className='d-flex'>
-        {categories.map(category => (
-          <div key={category.name} className={`d-flex category ${selectedCategory === category.name && 'category-active'}`}
-            onClick={
-              () => setSelectedCategory(category.name)
-            }
-          >
-            <h4>{category.name}</h4>
-            <img src={category.imageUrl} alt={category.name} height='40' width='60' />
+      <div className='homedatadiv'>
+
+        <div className='homepagetablediv'>
+
+          <div className='salesdis'>
+
+            <p className='datechange'>
+              From: <Space direction="vertical">
+                <DatePicker onChange={onChange} />
+              </Space>
+            </p>
+            <p>
+              To: <Space direction="vertical">
+                <DatePicker onChange={onChange} />
+              </Space>
+            </p>
+
           </div>
-        ))}
+
+          <div className='hometablediv'>
+
+            <Table dataSource={data}
+              size='medium'
+              bordered
+              footer={() => ''}>
+              <Column title="List Products" dataIndex="address" key="address" />
+              <Column title="Rate" dataIndex="age" key="age" />
+
+              <ColumnGroup title="Opening">
+                <Column title="Ctns." dataIndex="firstName" key="firstName" />
+                <Column title="Pcs." dataIndex="lastName" key="lastName" />
+              </ColumnGroup>
+
+              <ColumnGroup title="Stock In">
+                <Column title="Ctns." dataIndex="firstName" key="firstName" />
+                <Column title="Pcs." dataIndex="lastName" key="lastName" />
+              </ColumnGroup>
+
+              <ColumnGroup title="Stock Out">
+                <Column title="Ctns." dataIndex="firstName" key="firstName" />
+                <Column title="Pcs." dataIndex="lastName" key="lastName" />
+              </ColumnGroup>
+
+              <ColumnGroup title="Current Stocks">
+                <Column title="Ctns." dataIndex="firstName" key="firstName" />
+                <Column title="Pcs." dataIndex="lastName" key="lastName" />
+                <Column title="Value" dataIndex="lastName" key="lastName" />
+
+              </ColumnGroup>
+
+            </Table>
+
+          </div>
+
+        </div>
+
+        <div className='homedatediv'>
+          <p>Date:</p>
+
+
+          <p className='inputdis sidebysideinput'><Input name='company' type='text' placeholder="All Companies"></Input></p>
+          <Button className='buttondis'>Available Stock</Button>
+          <Button className='buttondis'>Low Stocks</Button>
+          <Button className='buttondis'>All Products</Button>
+        </div>
+
       </div>
-      <Row>
-        {
-          itemsData.filter((i) => i.category === selectedCategory).map(item => (
-            <Col xs={24} lg={6} md={12} sm={6}>
-              <ItemList key={item.id} item={item} />
-            </Col>
-          ))
-        }
-      </Row>
-    </DefaultLayout>
+
+    </DefaultLayout >
   )
 }
 

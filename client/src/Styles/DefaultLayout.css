@@ -120,9 +120,33 @@ body {
   display: flex;
   flex-direction: column;
   margin-left: 10px;
+  
 }
 
 .sidebysideinput{
   display: flex;
   flex-direction: row;
+}
+
+.supsideinfodiv{
+  display: flex;
+  flex-direction: column;
+  margin-left: 10px;
+  max-width: 30%;
+}
+
+.homepagetablediv{
+  max-width: 75%; 
+}
+
+.homedatadiv{
+  display: flex;
+  
+}
+
+.homedatediv{
+ display: flex;
+ flex-direction: column;
+ margin-left: 10px;
+  
 }

@@ -71,16 +71,11 @@ const DefaultLayout = ({ children }) => {
           </Menu.Item>
 
 
-
-
-
-
-
           <Menu.SubMenu title="Control Panel" icon={<ControlOutlined />}
             children >
 
             <Menu.Item key="/controlpanel" icon={<ControlOutlined />}>
-              <Link to="/controlpanel">Control Panel</Link>
+              <Link to="/controlpanel">Settings</Link>
             </Menu.Item>
 
             <Menu.Item key="/brand" icon={<StarOutlined />}>
@@ -94,9 +89,6 @@ const DefaultLayout = ({ children }) => {
             <Menu.Item key="/items" icon={<UnorderedListOutlined />}>
               <Link to="/items">Products</Link>
             </Menu.Item>
-
-
-
 
           </Menu.SubMenu>
 
@@ -179,27 +171,7 @@ const DefaultLayout = ({ children }) => {
         </Menu>
       </Sider>
       <Layout className="site-layout">
-        <Header className="site-layout-background" style={{ padding: 0 }}>
-          {React.createElement(
-            collapsed ? MenuUnfoldOutlined : MenuFoldOutlined,
-            {
-              className: "trigger",
-              onClick: toggle,
-            }
-          )}
-          <div>
-            <h3>Warehouse</h3>
-          </div>
 
-          <div className="cart-item d-flex justify-content-space-between flex-row" onClick={() => navigate('/cart')}>
-            <p>{cartItems.length}</p>
-            <ShoppingCartOutlined />
-
-          </div>
-
-
-
-        </Header>
         <Content
           className="site-layout-background"
           style={{

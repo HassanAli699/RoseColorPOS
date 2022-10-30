@@ -11,59 +11,41 @@ const ItemsPage = () => {
   const [popUpModal, setPopupModal] = useState(false)
   const [editItem, setEditItem] = useState(null)
 
-  // const getAllItems = async () => {
-  //   try {
-  //     dispatch({
-  //       type: 'SHOW_LOADING'
+  const getAllItems = async () => {
+    try {
 
-  //     })
-  //     const { data } = await axios.get('/api/items/get-item')
-  //     setItemsData(data);
-  //     dispatch({
-  //       type: 'HIDE_LOADING'
+      //  const { data } = await axios.get('/api/items/get-item')
+      //  setItemsData(data);
 
-  //     })
-  //     console.log(data)
-  //   } catch (error) {
-  //     dispatch({
-  //       type: 'HIDE_LOADING'
+      //  console.log(data)
+    } catch (error) {
 
-  //     })
-  //     console.log(error)
-  //   }
-  // }
-  // // Use Effect
-  // useEffect(() => {
-  //   getAllItems()
-  // }, [])
+      console.log(error)
+    }
+  }
+  // Use Effect
+  useEffect(() => {
+    getAllItems()
+  }, [])
 
-  // // Handle Delete
-  // const handleDelete = async (record) => {
-  //   try {
-  //     dispatch({
-  //       type: 'SHOW_LOADING'
+  // Handle Delete
+  const handleDelete = async (record) => {
+    try {
 
-  //     });
-  //     await axios.post('/api/items/delete-item', { itemId: record._id })
-  //     message.success('Item Deleted Successfully!')
-  //     getAllItems()
-  //     setPopupModal(false)
-  //     dispatch({
-  //       type: 'HIDE_LOADING'
-
-  //     })
+      //    await axios.post('/api/items/delete-item', { itemId: record._id })
+      //    message.success('Item Deleted Successfully!')
+      //   getAllItems()
+      setPopupModal(false)
 
 
-  //   } catch (error) {
-  //     dispatch({
-  //       type: 'HIDE_LOADING'
 
-  //     })
-  //     message.error('Something Went Wrong!')
-  //     console.log(error)
-  //   }
+    } catch (error) {
 
-  // }
+      message.error('Something Went Wrong!')
+      console.log(error)
+    }
+
+  }
 
   // Table Data
   const columns = [
@@ -92,7 +74,7 @@ const ItemsPage = () => {
 
             style={{ cursor: 'pointer' }}
             onClick={() => {
-              //   handleDelete(record)
+              handleDelete(record)
             }} />
 
         </div>
@@ -104,49 +86,31 @@ const ItemsPage = () => {
   const handleSubmit = async (value) => {
     if (editItem === null) {
       try {
-        dispatch({
-          type: 'SHOW_LOADING'
 
-        });
-        const res = await axios.post('/api/items/add-item', value)
-        message.success('Item Added Successfully!')
+        // const res = await axios.post('/api/items/add-item', value)
+        // message.success('Item Added Successfully!')
         //getAllItems()
         setPopupModal(false)
-        dispatch({
-          type: 'HIDE_LOADING'
 
-        })
 
 
       } catch (error) {
-        dispatch({
-          type: 'HIDE_LOADING'
 
-        })
         message.error('Something Went Wrong!')
         console.log(error)
       }
     } else {
       try {
-        dispatch({
-          type: 'SHOW_LOADING'
 
-        });
-        await axios.put('/api/items/edit-item', { ...value, itemId: editItem._id })
-        message.success('Item Updated Successfully!')
+        // await axios.put('/api/items/edit-item', { ...value, itemId: editItem._id })
+        //message.success('Item Updated Successfully!')
         //getAllItems()
         setPopupModal(false)
-        dispatch({
-          type: 'HIDE_LOADING'
 
-        })
 
 
       } catch (error) {
-        dispatch({
-          type: 'HIDE_LOADING'
 
-        })
         message.error('Something Went Wrong!')
         console.log(error)
       }
@@ -173,6 +137,8 @@ const ItemsPage = () => {
             onCancel={() => {
               setEditItem(null)
               setPopupModal(false)
+
+
             }}
             footer={false}>
             <Form layout='vertical' initialValues={editItem} onFinish={handleSubmit}>

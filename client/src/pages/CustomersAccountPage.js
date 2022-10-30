@@ -114,7 +114,7 @@ const CustomersAccountPage = () => {
                         Adjustment
                     </h5>
                     <p>
-                        Customers Bio Data: <TextArea rows={2} />
+                        Customers Bio Data: <TextArea rows={4} />
                     </p>
                     <p className='custsideinfodiv'>
                         Search Record:
