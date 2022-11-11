@@ -8,7 +8,6 @@ import CartPage from './pages/CartPage';
 import CategoryPage from './pages/CategoryPage';
 import ControlPanelPage from './pages/ControlPanelPage';
 import CustomersAccountPage from './pages/CustomersAccountPage';
-import CustomersPage from './pages/CustomersPage';
 import DataBackupPage from './pages/DataBackupPage';
 import HomePage from './pages/HomePage';
 import ItemsPage from './pages/ItemsPage';
@@ -78,30 +77,6 @@ function App() {
             <PurchasePage />
 
             // </ProtectedRoute>
-
-
-          } />
-          <Route path="/customers" element={
-            //<ProtectedRoute>
-
-            <CustomersPage />
-            //</ProtectedRoute>
-
-
-          } />
-          <Route path="/category" element={
-            //<ProtectedRoute>
-
-            <CategoryPage />
-            //</ProtectedRoute>
-
-
-          } />
-          <Route path="/brand" element={
-            //<ProtectedRoute>
-            <BrandPage />
-
-            //</ProtectedRoute>
 
 
           } />

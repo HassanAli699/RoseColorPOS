@@ -89,14 +89,15 @@ body {
   margin-right: 5px;
 }
 .tablediv {
-  display: flex;
-  flex: 50%;
-  padding: 10;
+  display: flex;  
+  flex-direction: row;
+  width: 80%;
+  
 }
 
 .buttondis {
   margin: 5px;
-  width: 70%;
+  width: 90%;
   background-color: #1890ff;
   color: #fff;
   
@@ -116,24 +117,50 @@ body {
   flex-direction: row;
   padding: 10px;
   
+  
 }
 .custsideinfodiv{
   display: flex;
   flex-direction: column;
   margin-left: 10px;
+  width: 50%;
   
 }
 
 .sidebysideinput{
   display: flex;
   flex-direction: row;
+  
 }
+
+.newsidebysideinput{
+  display: flex;
+  flex-direction: row;
+  font-weight: 500;
+  font-size: small;
+  width: 50%;
+  margin: 10px;
+  
+}
+
+.ratesdiv{
+display: flex;
+flex-direction: row;
+height: 40px;
+width: 90%;
+margin: 10px;
+}
+
+.itemtabledivnew{
+    min-height: 140px;
+}
+
 
 .supsideinfodiv{
   display: flex;
   flex-direction: column;
-  margin-left: 10px;
-  max-width: 30%;
+ width: 30%;
+ margin-left: 10px;
 }
 
 
@@ -170,4 +197,29 @@ body {
 
 .inputmargindiv{
   margin-left: 5px;
+}
+
+.itempagediv{
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+  margin-right: 20px;
+}
+
+.itembiodatadiv{
+  display: flex;
+  flex-direction: column;
+
+}
+
+.productpagediv{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+
+}
+
+.itempagebuttondiv{
+  display: flex;
+  flex: 50%;
 }

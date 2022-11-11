@@ -18,20 +18,15 @@ const SuppliersAccountPage = () => {
     };
 
 
-    const dataSource = [
-        {
-            key: '1',
-            name: 'Mike',
-            age: 32,
-            address: '10 Downing Street',
-        },
-        {
-            key: '2',
-            name: 'John',
-            age: 42,
-            address: '10 Downing Street',
-        },
-    ];
+    const originData = [];
+    for (let i = 0; i < 100; i++) {
+        originData.push({
+            key: i.toString(),
+            name: `Edrward ${i}`,
+            age: `${i}`,
+            address: `${i}`,
+        });
+    }
 
     const columns = [
         {
@@ -69,6 +64,7 @@ const SuppliersAccountPage = () => {
 
     return (
         <DefaultLayout>
+            <h3>Supplier's Account</h3>
 
             <div className='cusdatadiv'>
 
@@ -91,10 +87,12 @@ const SuppliersAccountPage = () => {
 
 
                     <Table
-                        dataSource={dataSource}
+                        dataSource={originData}
                         columns={columns}
                         size='small'
                         bordered
+                        pagination={false}
+                        scroll={{ y: 240 }}
                         footer={() => 'Total'}
                     />
 

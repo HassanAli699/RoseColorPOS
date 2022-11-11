@@ -1,189 +1,184 @@
-import React, { useEffect, useState } from 'react'
-import { useDispatch } from 'react-redux'
-import { DeleteOutlined, EditOutlined } from '@ant-design/icons';
-import axios from 'axios'
+import React, { useState } from 'react'
 import DefaultLayout from '../components/DefaultLayout'
-import { Modal, Button, Table, Form, Input, Select, message } from 'antd';
+import { Table, Input, DatePicker, Space, Button, Radio } from 'antd';
+
 
 const ItemsPage = () => {
-  const dispatch = useDispatch()
-  const [itemsData, setItemsData] = useState([])
-  const [popUpModal, setPopupModal] = useState(false)
-  const [editItem, setEditItem] = useState(null)
 
-  const getAllItems = async () => {
-    try {
+  const [value, setValue] = useState(1);
 
-      //  const { data } = await axios.get('/api/items/get-item')
-      //  setItemsData(data);
+  const onRadioChange = (e) => {
+    console.log('radio checked', e.target.value);
+    setValue(e.target.value);
+  };
 
-      //  console.log(data)
-    } catch (error) {
-
-      console.log(error)
-    }
-  }
-  // Use Effect
-  useEffect(() => {
-    getAllItems()
-  }, [])
-
-  // Handle Delete
-  const handleDelete = async (record) => {
-    try {
-
-      //    await axios.post('/api/items/delete-item', { itemId: record._id })
-      //    message.success('Item Deleted Successfully!')
-      //   getAllItems()
-      setPopupModal(false)
-
-
-
-    } catch (error) {
-
-      message.error('Something Went Wrong!')
-      console.log(error)
-    }
-
-  }
-
-  // Table Data
-  const columns = [
-    { title: 'Name', dataIndex: 'name' },
-    { title: 'Image', dataIndex: 'image', render: (image, record) => <img src={image} alt={record.name} height="60" width='60' /> },
-
-    { title: 'Price', dataIndex: 'price' },
+  const dataSource = [
+    {
+      key: '1',
+      name: 'Mike'
+    },
 
     {
-      title: 'Actions', dataIndex: '_id', render: (id, record) => (
-        <div>
-
-          <EditOutlined
-
-            style={{ cursor: 'pointer' }}
-            onClick={() => {
-              setEditItem(record)
-              setPopupModal(true);
-            }
-            }
-
-
-          />
-
-          <DeleteOutlined
-
-            style={{ cursor: 'pointer' }}
-            onClick={() => {
-              handleDelete(record)
-            }} />
-
-        </div>
-      ),
+      key: '2',
+      name: 'John',
+      age: 42,
+      address: '10 Downing Street',
+    },
+    {
+      key: '3',
+      name: 'Mike'
+    }, {
+      key: '4',
+      name: 'Mike'
+    }, {
+      key: '5',
+      name: 'Mike'
+    }, {
+      key: '6',
+      name: 'Mike'
+    }, {
+      key: '7',
+      name: 'Mike'
+    }, {
+      key: '8',
+      name: 'Mike'
+    }, {
+      key: '9',
+      name: 'Mike'
+    }, {
+      key: '10',
+      name: 'Mike'
+    }, {
+      key: '11',
+      name: 'Mike'
+    }, {
+      key: '12',
+      name: 'Mike'
+    },
+    {
+      key: '13',
+      name: 'Mike'
+    }, {
+      key: '14',
+      name: 'Mike'
+    }, {
+      key: '15',
+      name: 'Mike'
+    }, {
+      key: '16',
+      name: 'Mike'
+    }, {
+      key: '17',
+      name: 'Mike'
+    }, {
+      key: '18',
+      name: 'Mike'
+    }, {
+      key: '19',
+      name: 'Mike'
     },
   ];
 
-  // Handle Submit
-  const handleSubmit = async (value) => {
-    if (editItem === null) {
-      try {
+  const columns = [
+    {
+      title: 'List of Products',
+      dataIndex: 'name',
+      key: 'name',
+    },
 
-        // const res = await axios.post('/api/items/add-item', value)
-        // message.success('Item Added Successfully!')
-        //getAllItems()
-        setPopupModal(false)
-
-
-
-      } catch (error) {
-
-        message.error('Something Went Wrong!')
-        console.log(error)
-      }
-    } else {
-      try {
-
-        // await axios.put('/api/items/edit-item', { ...value, itemId: editItem._id })
-        //message.success('Item Updated Successfully!')
-        //getAllItems()
-        setPopupModal(false)
-
-
-
-      } catch (error) {
-
-        message.error('Something Went Wrong!')
-        console.log(error)
-      }
-    }
-
-
-  }
-
+  ];
 
   return (
     <DefaultLayout>
-      <div className='d-flex justify-content-between'>
-        <h1>Products</h1>
-        <Button type='primary' onClick={() => setPopupModal(true)}>Add Item</Button>
+
+      <div className='productpagediv'>
+
+        <div className='itempagediv'>
+          <Radio.Group onChange={onRadioChange} value={value}>
+            <Radio value={1}>Available
+
+            </Radio>
+
+            <Radio value={2}>
+              Recycle Bin
+
+            </Radio>
+
+
+          </Radio.Group>
+
+
+
+          <div className='itemtablediv'>
+            <p className='sidebysideinput'><Input name='companyname' type='text' placeholder="Company name"></Input></p>
+            <Table
+              className='itemtabledivnew'
+              bordered
+              pagination={false}
+              size='small'
+              dataSource={dataSource}
+              columns={columns}
+              scroll={{ y: 240 }}
+
+            />
+
+          </div>
+
+          <div>
+            <Button className='buttondis'>Search</Button>
+
+          </div>
+
+
+
+
+        </div>
+
+        <div className='itembiodatadiv'>
+
+          <h5>Product's BioData</h5>
+          <p className='newsidebysideinput'>Code<Input name='productcode' type='number' placeholder="Product Code"></Input></p>
+          <p className='newsidebysideinput'>Name<Input name='productcode' type='number' placeholder="Product Name"></Input></p>
+          <p className='newsidebysideinput'>Personal Code<Input name='productcode' type='number' placeholder="Personal Code"></Input></p>
+          <p className='newsidebysideinput'>Packing<Input name='productcode' type='number' placeholder="Packaging"></Input></p>
+
+          <p className='newsidebysideinput'>Company<Input name='productcode' type='number' placeholder="Company"></Input></p>
+
+
+
+          <p className='ratesdiv'>Purchase Rate<Input name='productcode' type='number' placeholder="Purchase Rate"></Input>
+            <p className='ratesdiv'>Per Peice <Input name='productcode' type='number' placeholder="Purchase Rate"></Input></p>
+          </p>
+          <p className='ratesdiv'>Trade Rate<Input name='productcode' type='number' placeholder="Purchase Rate"></Input>
+            <p className='ratesdiv'>Per Peice <Input name='productcode' type='number' placeholder="Purchase Rate"></Input></p>
+          </p>
+          <p className='ratesdiv'>Retail Rate<Input name='productcode' type='number' placeholder="Purchase Rate"></Input>
+            <p className='ratesdiv'>Per Peice <Input name='productcode' type='number' placeholder="Purchase Rate"></Input></p>
+          </p>
+
+
+          <p className='newsidebysideinput'>Minimun Stock<Input name='productcode' type='number' placeholder="Minimum Stock"></Input></p>
+          <p className='newsidebysideinput'>Unit<Input name='productcode' type='number' placeholder="Qty"></Input></p>
+
+
+
+          <div className='itempagebuttondiv'>
+            <Button className='buttondis'>Add New</Button>
+            <Button className='buttondis'>Edit</Button>
+            <Button className='buttondis'>Save</Button>
+            <Button className='buttondis'>Delete</Button>
+          </div>
+
+
+        </div>
+
+
+
+
       </div>
 
 
-      <Table columns={columns} dataSource={itemsData} bordered />
 
-      {
-        popUpModal && (
-          <Modal title={`${editItem !== null ? 'Edit Item' : 'Add New Item'}`}
-            open={popUpModal}
-            onCancel={() => {
-              setEditItem(null)
-              setPopupModal(false)
-
-
-            }}
-            footer={false}>
-            <Form layout='vertical' initialValues={editItem} onFinish={handleSubmit}>
-
-              <Form.Item name='name' label='Name'>
-
-                <Input />
-              </Form.Item>
-
-              <Form.Item name='price' label='Price'>
-
-                <Input />
-              </Form.Item>
-
-              <Form.Item name='image' label='Image URL'>
-
-                <Input />
-              </Form.Item>
-
-              <Form.Item name='category' label='Category'>
-
-                <Select>
-
-                  <Select.Option value='drinks'>Drinks</Select.Option>
-                  <Select.Option value='rice'>Rice</Select.Option>
-                  <Select.Option value='noodles'>Noodles</Select.Option>
-
-                </Select>
-
-              </Form.Item>
-
-
-              <div className='d-flex justify-content-end'>
-                <Button type='primary' htmlType='submit'>SAVE</Button>
-
-              </div>
-
-
-
-            </Form>
-
-
-          </Modal>
-        )
-      }
 
     </DefaultLayout>
   )

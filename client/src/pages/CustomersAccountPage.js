@@ -17,21 +17,16 @@ const CustomersAccountPage = () => {
         setValue(e.target.value);
     };
 
+    const originData = [];
+    for (let i = 0; i < 100; i++) {
+        originData.push({
+            key: i.toString(),
+            name: `Edrward ${i}`,
+            age: `${i}`,
+            address: `${i}`,
+        });
+    }
 
-    const dataSource = [
-        {
-            key: '1',
-            name: 'Mike',
-            age: 32,
-            address: '10 Downing Street',
-        },
-        {
-            key: '2',
-            name: 'John',
-            age: 42,
-            address: '10 Downing Street',
-        },
-    ];
 
     const columns = [
         {
@@ -69,6 +64,7 @@ const CustomersAccountPage = () => {
 
     return (
         <DefaultLayout>
+            <h3>Customer's Account</h3>
 
             <div className='cusdatadiv'>
 
@@ -91,9 +87,11 @@ const CustomersAccountPage = () => {
 
 
                     <Table
-                        dataSource={dataSource}
+                        dataSource={originData}
                         columns={columns}
                         size='small'
+                        pagination={false}
+                        scroll={{ y: 240 }}
                         bordered
                         footer={() => 'Total'}
                     />

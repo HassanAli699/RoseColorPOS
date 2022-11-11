@@ -64,13 +64,6 @@ const DefaultLayout = ({ children }) => {
             <Link to="/purchase">Purchase</Link>
           </Menu.Item>
 
-
-
-          <Menu.Item key="/customers" icon={<UserOutlined />}>
-            <Link to="/customers">Customers</Link>
-          </Menu.Item>
-
-
           <Menu.SubMenu title="Control Panel" icon={<ControlOutlined />}
             children >
 
@@ -78,13 +71,7 @@ const DefaultLayout = ({ children }) => {
               <Link to="/controlpanel">Settings</Link>
             </Menu.Item>
 
-            <Menu.Item key="/brand" icon={<StarOutlined />}>
-              <Link to="/brand">Brands</Link>
-            </Menu.Item>
 
-            <Menu.Item key="/category" icon={<ContainerOutlined />}>
-              <Link to="/category">Category</Link>
-            </Menu.Item>
 
             <Menu.Item key="/items" icon={<UnorderedListOutlined />}>
               <Link to="/items">Products</Link>

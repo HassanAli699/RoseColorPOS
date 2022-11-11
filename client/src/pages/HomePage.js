@@ -14,24 +14,24 @@ const HomePage = () => {
   const data = [
     {
       key: '1',
-      firstName: 'John',
-      lastName: 'Brown',
+      firstName: '1',
+      lastName: '2',
       age: 32,
       address: 'New York No. 1 Lake Park',
 
     },
     {
       key: '2',
-      firstName: 'Jim',
-      lastName: 'Green',
+      firstName: '3',
+      lastName: '4',
       age: 42,
       address: 'London No. 1 Lake Park',
 
     },
     {
       key: '3',
-      firstName: 'Joe',
-      lastName: 'Black',
+      firstName: '5',
+      lastName: '6',
       age: 32,
       address: 'Sidney No. 1 Lake Park',
 

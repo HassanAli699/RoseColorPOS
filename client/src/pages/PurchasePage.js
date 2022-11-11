@@ -2,7 +2,7 @@ import DefaultLayout from '../components/DefaultLayout'
 import { SearchOutlined } from '@ant-design/icons';
 import { Form, Input, InputNumber, Popconfirm, Table, Typography, Space, Button, Select } from 'antd';
 import React, { useRef, useState } from 'react';
-import Highlighter from 'react-highlight-words';
+
 
 
 
@@ -11,190 +11,14 @@ for (let i = 0; i < 100; i++) {
     originData.push({
         key: i.toString(),
         name: `Edrward ${i}`,
-        age: 32,
-        address: `London Park no. ${i}`,
+        age: `${i}`,
+        address: `${i}`,
     });
 }
-
-const EditableCell = ({
-    editing,
-    dataIndex,
-    title,
-    inputType,
-    record,
-    index,
-    children,
-    ...restProps
-}) => {
-    const inputNode = inputType === 'number' ? <InputNumber /> : <Input />;
-    return (
-        <td {...restProps}>
-            {editing ? (
-                <Form.Item
-                    name={dataIndex}
-                    style={{
-                        margin: 0,
-                    }}
-                    rules={[
-                        {
-                            required: true,
-                            message: `Please Input ${title}!`,
-                        },
-                    ]}
-                >
-                    {inputNode}
-                </Form.Item>
-            ) : (
-                children
-            )}
-        </td>
-    );
-};
-
-
 
 const PurchasePage = () => {
 
     const [form] = Form.useForm();
-    const [data, setData] = useState(originData);
-    const [editingKey, setEditingKey] = useState('');
-
-    const isEditing = (record) => record.key === editingKey;
-    const edit = (record) => {
-        form.setFieldsValue({
-            name: '',
-            age: '',
-            address: '',
-            ...record,
-        });
-        setEditingKey(record.key);
-    };
-    const cancel = () => {
-        setEditingKey('');
-    };
-    const save = async (key) => {
-        try {
-            const row = await form.validateFields();
-            const newData = [...data];
-            const index = newData.findIndex((item) => key === item.key);
-            if (index > -1) {
-                const item = newData[index];
-                newData.splice(index, 1, {
-                    ...item,
-                    ...row,
-                });
-                setData(newData);
-                setEditingKey('');
-            } else {
-                newData.push(row);
-                setData(newData);
-                setEditingKey('');
-            }
-        } catch (errInfo) {
-            console.log('Validate Failed:', errInfo);
-        }
-    };
-
-
-
-    // functions 
-    const [searchText, setSearchText] = useState('');
-    const [searchedColumn, setSearchedColumn] = useState('');
-    const searchInput = useRef(null);
-    const handleSearch = (selectedKeys, confirm, dataIndex) => {
-        confirm();
-        setSearchText(selectedKeys[0]);
-        setSearchedColumn(dataIndex);
-    };
-    const handleReset = (clearFilters) => {
-        clearFilters();
-        setSearchText('');
-    };
-    const getColumnSearchProps = (dataIndex) => ({
-        filterDropdown: ({ setSelectedKeys, selectedKeys, confirm, clearFilters }) => (
-            <div
-                style={{
-                    padding: 8,
-                }}
-            >
-                <Input
-                    ref={searchInput}
-                    placeholder={`Search ${dataIndex}`}
-                    value={selectedKeys[0]}
-                    onChange={(e) => setSelectedKeys(e.target.value ? [e.target.value] : [])}
-                    onPressEnter={() => handleSearch(selectedKeys, confirm, dataIndex)}
-                    style={{
-                        marginBottom: 8,
-                        display: 'block',
-                    }}
-                />
-                <Space>
-                    <Button
-                        type="primary"
-                        onClick={() => handleSearch(selectedKeys, confirm, dataIndex)}
-                        icon={<SearchOutlined />}
-                        size="small"
-                        style={{
-                            width: 90,
-                        }}
-                    >
-                        Search
-                    </Button>
-                    <Button
-                        onClick={() => clearFilters && handleReset(clearFilters)}
-                        size="small"
-                        style={{
-                            width: 90,
-                        }}
-                    >
-                        Reset
-                    </Button>
-                    <Button
-                        type="link"
-                        size="small"
-                        onClick={() => {
-                            confirm({
-                                closeDropdown: false,
-                            });
-                            setSearchText(selectedKeys[0]);
-                            setSearchedColumn(dataIndex);
-                        }}
-                    >
-                        Filter
-                    </Button>
-                </Space>
-            </div>
-        ),
-        filterIcon: (filtered) => (
-            <SearchOutlined
-                style={{
-                    color: filtered ? '#1890ff' : undefined,
-                }}
-            />
-        ),
-        onFilter: (value, record) =>
-            record[dataIndex].toString().toLowerCase().includes(value.toLowerCase()),
-        onFilterDropdownOpenChange: (visible) => {
-            if (visible) {
-                setTimeout(() => searchInput.current?.select(), 100);
-            }
-        },
-        render: (text) =>
-            searchedColumn === dataIndex ? (
-                <Highlighter
-                    highlightStyle={{
-                        backgroundColor: '#ffc069',
-                        padding: 0,
-                    }}
-                    searchWords={[searchText]}
-                    autoEscape
-                    textToHighlight={text ? text.toString() : ''}
-                />
-            ) : (
-                text
-            ),
-    });
-
 
     const columns = [
         {
@@ -202,24 +26,23 @@ const PurchasePage = () => {
             dataIndex: 'name',
             key: 'name',
             width: '30%',
-            editable: true,
-            ...getColumnSearchProps('name'),
+
+
         },
         {
             title: 'Codes',
             dataIndex: 'age',
             key: 'age',
-            width: '20%',
-            editable: true,
-            ...getColumnSearchProps('age'),
+            width: '15%',
+
         },
         {
             title: 'Rates',
             dataIndex: 'address',
             key: 'address',
-            width: '30%',
-            editable: true,
-            ...getColumnSearchProps('address'),
+            width: '15%',
+
+
             sorter: (a, b) => a.address.length - b.address.length,
             sortDirections: ['descend', 'ascend'],
         },
@@ -233,23 +56,21 @@ const PurchasePage = () => {
             key: 'name',
             width: '30%',
 
-            ...getColumnSearchProps('name'),
+
         },
         {
             title: 'Codes',
             dataIndex: 'age',
             key: 'age',
-            width: '20%',
+            width: '15%',
 
-            ...getColumnSearchProps('age'),
+
         },
         {
             title: 'Quantity',
             dataIndex: 'address',
             key: 'codes',
-            width: '30%',
-
-            ...getColumnSearchProps('address'),
+            width: '15%',
             sorter: (a, b) => a.address.length - b.address.length,
             sortDirections: ['descend', 'ascend'],
         },
@@ -259,8 +80,6 @@ const PurchasePage = () => {
             dataIndex: 'codes',
             key: 'address',
             width: '30%',
-
-            ...getColumnSearchProps('address'),
             sorter: (a, b) => a.address.length - b.address.length,
             sortDirections: ['descend', 'ascend'],
         },
@@ -268,31 +87,17 @@ const PurchasePage = () => {
 
     ];
 
-    const mergedColumns = columns.map((col) => {
-        if (!col.editable) {
-            return col;
-        }
-        return {
-            ...col,
-            onCell: (record) => ({
-                record,
-                inputType: col.dataIndex === 'age' ? 'number' : 'text',
-                dataIndex: col.dataIndex,
-                title: col.title,
-                editing: isEditing(record),
-            }),
-        };
-    });
-
 
     return (
         <DefaultLayout>
 
-            <h2>Purchase Invoice : </h2>
+            <div className='salepageheaderdiv'>
+                <h3>Purchase Invoice : </h3>
+                <p className='inputdiv'>Supplier's Name : <Input className='inputmargindiv' name='suppliername' type='text' placeholder="Suppliers Name"></Input> </p>
+            </div>
 
-            <div className='salesdis'>
-                <p>Suppliers's Name : <Input name='suppliersname' type='text' placeholder="Supplier's Name"></Input> </p>
-
+            <div>
+                <p className='inputdivsearch'>Product: <Input className='inputmargindiv' name='productname' type='text' placeholder="Search Product"></Input> </p>
             </div>
 
             <div className='tablediv'  >
@@ -301,35 +106,31 @@ const PurchasePage = () => {
                     <Table
 
                         className='table'
-                        components={{
-                            body: {
-                                cell: EditableCell,
-                            },
-                        }}
                         bordered
                         size='small'
-                        dataSource={data}
-                        columns={mergedColumns}
+                        dataSource={originData}
+                        columns={columns}
                         scroll={{ y: 240 }}
-                        rowClassName="editable-row"
+                        pagination={false}
+
 
                     />
                 </Form>
 
+                <div >
+                    <Button className='buttondis'>Add Item</Button>
+                    <Button className='buttondis'>Remove Item</Button>
+                </div>
+
                 <Form form={form} component={false}>
                     <Table
                         className='table'
-                        components={{
-                            body: {
-                                cell: EditableCell,
-                            },
-                        }}
                         bordered
                         size='small'
-                        dataSource={data}
+                        dataSource={originData}
                         columns={itemColumns}
                         scroll={{ y: 240 }}
-                        title={() => 'Items :'}
+                        pagination={false}
 
                     />
                 </Form>
@@ -352,10 +153,7 @@ const PurchasePage = () => {
                 <p className='inputdis'>Total Price :<Input name='Discount' type='number' placeholder="Total Price"></Input> </p>
 
 
-                <div >
-                    <Button className='buttondis'>Add Item</Button>
-                    <Button className='buttondis'>Remove Item</Button>
-                </div>
+
 
 
             </div>
