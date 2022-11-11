@@ -5,15 +5,23 @@ import { Link, useNavigate } from "react-router-dom";
 import {
   MenuUnfoldOutlined,
   MenuFoldOutlined,
+  ShopOutlined,
   UserOutlined,
   LogoutOutlined,
   HomeOutlined,
+  DatabaseOutlined,
   CopyOutlined,
+  DollarCircleOutlined,
+  BankOutlined,
+  HistoryOutlined,
+  SwapOutlined,
   UnorderedListOutlined,
   ShoppingCartOutlined,
   ControlOutlined,
   InfoCircleOutlined,
+  ReconciliationOutlined,
   ContainerOutlined,
+  RollbackOutlined,
   StarOutlined,
   ToolOutlined
 
@@ -56,11 +64,11 @@ const DefaultLayout = ({ children }) => {
             <Link to="/">Home</Link>
           </Menu.Item>
 
-          <Menu.Item key="/bills" icon={<CopyOutlined />}>
+          <Menu.Item key="/bills" icon={<DollarCircleOutlined />}>
             <Link to="/bills">Sales</Link>
           </Menu.Item>
 
-          <Menu.Item key="/purchase" icon={<UserOutlined />}>
+          <Menu.Item key="/purchase" icon={<CopyOutlined />}>
             <Link to="/purchase">Purchase</Link>
           </Menu.Item>
 
@@ -70,8 +78,6 @@ const DefaultLayout = ({ children }) => {
             <Menu.Item key="/controlpanel" icon={<ControlOutlined />}>
               <Link to="/controlpanel">Settings</Link>
             </Menu.Item>
-
-
 
             <Menu.Item key="/items" icon={<UnorderedListOutlined />}>
               <Link to="/items">Products</Link>
@@ -83,57 +89,57 @@ const DefaultLayout = ({ children }) => {
             children >
 
 
-            <Menu.Item key="/salerec" icon={<StarOutlined />}>
+            <Menu.Item key="/salerec" icon={<DatabaseOutlined />}>
               <Link to="/salerec">Sale Record</Link>
 
             </Menu.Item>
 
 
-            <Menu.Item key="/purrec" icon={<StarOutlined />}>
+            <Menu.Item key="/purrec" icon={<DatabaseOutlined />}>
               <Link to="/purrec">Purchase Record</Link>
             </Menu.Item>
 
 
-            <Menu.Item key="/customeracc" icon={<StarOutlined />}>
+            <Menu.Item key="/customeracc" icon={<UserOutlined />}>
               <Link to="/customeracc">Customers Account</Link>
             </Menu.Item>
 
 
-            <Menu.Item key="/supacc" icon={<StarOutlined />}>
+            <Menu.Item key="/supacc" icon={<UserOutlined />}>
               <Link to="/supacc">Suppliers Account</Link>
             </Menu.Item>
 
 
-            <Menu.Item key="/salereturn" icon={<StarOutlined />}>
+            <Menu.Item key="/salereturn" icon={<SwapOutlined />}>
               <Link to="/salereturn">Sale Returned</Link>
             </Menu.Item>
 
 
-            <Menu.Item key="/bankacc" icon={<StarOutlined />}>
+            <Menu.Item key="/bankacc" icon={<BankOutlined />}>
               <Link to="/bankacc">Bank Account</Link>
             </Menu.Item>
 
 
-            <Menu.Item key="/purreturn" icon={<StarOutlined />}>
+            <Menu.Item key="/purreturn" icon={<SwapOutlined />}>
               <Link to="/purreturn">Purchase Returned</Link>
             </Menu.Item>
 
 
-            <Menu.Item key="/producthistory" icon={<StarOutlined />}>
+            <Menu.Item key="/producthistory" icon={<HistoryOutlined />}>
               <Link to="/producthistory">Product History</Link>
             </Menu.Item>
 
 
-            <Menu.Item key="/searchrec" icon={<StarOutlined />}>
+            <Menu.Item key="/searchrec" icon={<ReconciliationOutlined />}>
               <Link to="/searchrec">Search Record</Link>
             </Menu.Item>
 
 
-            <Menu.Item key="/sale-from-shop" icon={<StarOutlined />}>
+            <Menu.Item key="/sale-from-shop" icon={<ShopOutlined />}>
               <Link to="/sale-from-shop">Sale From Shop</Link>
             </Menu.Item>
 
-            <Menu.Item key="/databack" icon={<StarOutlined />}>
+            <Menu.Item key="/databack" icon={<RollbackOutlined />}>
               <Link to="/databack">Data Backup/Restore</Link>
             </Menu.Item>
 
