@@ -1,11 +1,15 @@
 {
   "name": "usama-pos",
+  "homepage": "https://HassanAli699.github.io/RoseColorPOS",
   "version": "1.0.0",
   "description": "Usama-pos",
   "main": "server.js",
   "scripts": {
+    "predeploy":"npm run build",
+    "deploy": "gh-pages -d build",
     "start": "node server.js",
     "server": "nodemon server.js",
+    "build" : "react-scripts build",
     "client": "npm start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\" ",
     "seed": "node seeder.js",
@@ -20,6 +24,7 @@
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.1",
+    "gh-pages": "^4.0.0",
     "mongoose": "^6.6.4",
     "morgan": "^1.10.0"
   }
